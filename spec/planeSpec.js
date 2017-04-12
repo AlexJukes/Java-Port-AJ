@@ -22,8 +22,12 @@ describe ('Plane', function() {
   });
   describe('land', function() {
     it('should make the plane land', function() {
+      plane.takeOff();
       plane.land();
       expect(plane.isFlying).toBe(false);
+    });
+    it('should throw error if plane is grounded', function() {
+      expect(function() {plane.land() }).toThrow('Plane already landed');
     });
   });
 });
